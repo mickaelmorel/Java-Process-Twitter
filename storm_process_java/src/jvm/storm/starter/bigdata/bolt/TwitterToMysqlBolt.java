@@ -136,7 +136,16 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
         String username = MyProperties.getProperties("mysql_user");
         String password = MyProperties.getProperties("mysql_password");
 
+        System.out.println(url);
+        System.out.println(username);
+        System.out.println(password);
+
         System.out.println("Connecting database...");
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch(ClassNotFoundException e) {
+            System.out.println(e);
+        }
 
         try (Connection connection = DriverManager.getConnection(url, username, password)) {
             System.out.println("Database connected!");
@@ -146,7 +155,7 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
 
             connection.close();
         } catch (SQLException e) {
-            System.out.println("Error while executing request : "+sql);
+            System.out.println("Error while executing request : "+ e);
         }
     }
 
