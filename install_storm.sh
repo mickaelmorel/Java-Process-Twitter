@@ -9,30 +9,12 @@
 sudo rm -rf /opt/storm
 sudo rm -rf /opt/zookeeper
 
-sudo apt-get install mysql-server mysql-client
-sudo /etc/init.d/mysql start
-sudo apt-get install apache2
-sudo apt-get install php5
-
-# Install requirement
-
-#
-# Install Java JDK
-#
-cd /tmp
-wget https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz
-tar -xvzf jdk-8u191-linux-x64.tar.gz
-sudo mkdir /opt/jdk
-sudo mv jdk1.8.0_111 /opt/jdk/
-
-export JAVA_HOME =/opt/jdk/
-
 #
 # Install Zookeeper
 #
 
 sudo mkdir /opt/zookeeper
-sudo mv zookeeper-3.4.12/* /opt/zookeeper/
+sudo cp -r zookeeper-3.4.12/* /opt/zookeeper/
 
 #
 # Configuration Zookeeper
@@ -47,7 +29,7 @@ syncLimit=2
 
 EOF
 
-/opt/zookeeper/bin/zkServer.sh start
+sudo /opt/zookeeper/bin/zkServer.sh start
 #
 # Optionnal Zookeeper Command
 #
@@ -63,7 +45,7 @@ EOF
 
 sudo mkdir /opt/storm
 sudo mkdir /opt/storm/data
-sudo mv apache-storm-1.0.2 /opt/storm/
+sudo cp -r apache-storm-1.0.2 /opt/storm/
 
 #
 # Configuration Apache STORM
@@ -83,6 +65,4 @@ EOF
 #
 # Lancement de STORM
 #
-/opt/storm/apache-storm-1.0.2/bin/storm nimbus
-/opt/storm/apache-storm-1.0.2/bin/storm supervisor
-/opt/storm/apache-storm-1.0.2/bin/storm ui
+/opt/storm/apache-storm-1.0.2/bin/storm nimbus | /opt/storm/apache-storm-1.0.2/bin/storm supervisor | /opt/storm/apache-storm-1.0.2/bin/storm ui

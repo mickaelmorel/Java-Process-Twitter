@@ -6,6 +6,7 @@ import org.apache.storm.LocalCluster;
 import org.apache.storm.StormSubmitter;
 import org.apache.storm.topology.TopologyBuilder;
 import org.apache.storm.utils.Utils;
+import storm.starter.bigdata.bolt.TweetApiBolt;
 import storm.starter.bigdata.bolt.TweeterDataBolt;
 import storm.starter.bigdata.bolt.TwitterToMysqlBolt;
 import storm.starter.bigdata.spout.TwitterSpout;
@@ -22,9 +23,11 @@ public class TwitterMysqlTopology {
                 MyProperties.getProperties("twitter_consumer_access_token"),
                 MyProperties.getProperties("twitter_consumer_access_token_secret")));
 
-        builder.setBolt("push", new TwitterToMysqlBolt(), 2).shuffleGrouping("twitterinput");
+        builder.setBolt("push", new TwitterToMysqlBolt(), 4).shuffleGrouping("twitterinput");
 
-         builder.setBolt("data",new TweeterDataBolt(),2).shuffleGrouping("push");
+        builder.setBolt("data",new TweeterDataBolt(),4).shuffleGrouping("push");
+
+        //builder.setBolt("api",new TweetApiBolt(),4).shuffleGrouping("push");
 
         Config conf = new Config();
         conf.setDebug(false);

@@ -1,0 +1,30 @@
+2018-12-12 16:37:11,037 [myid:] - INFO  [main:QuorumPeerConfig@136] - Reading configuration from: /opt/zookeeper/bin/../conf/zoo.cfg
+2018-12-12 16:37:11,061 [myid:] - INFO  [main:DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
+2018-12-12 16:37:11,064 [myid:] - INFO  [main:DatadirCleanupManager@79] - autopurge.purgeInterval set to 0
+2018-12-12 16:37:11,066 [myid:] - INFO  [main:DatadirCleanupManager@101] - Purge task is not scheduled.
+2018-12-12 16:37:11,069 [myid:] - WARN  [main:QuorumPeerMain@116] - Either no config or no quorum defined in config, running  in standalone mode
+2018-12-12 16:37:11,093 [myid:] - INFO  [main:QuorumPeerConfig@136] - Reading configuration from: /opt/zookeeper/bin/../conf/zoo.cfg
+2018-12-12 16:37:11,100 [myid:] - INFO  [main:ZooKeeperServerMain@98] - Starting server
+2018-12-12 16:37:11,137 [myid:] - INFO  [main:Environment@100] - Server environment:zookeeper.version=3.4.12-e5259e437540f349646870ea94dc2658c4e44b3b, built on 03/27/2018 03:55 GMT
+2018-12-12 16:37:11,139 [myid:] - INFO  [main:Environment@100] - Server environment:host.name=mrstruct
+2018-12-12 16:37:11,141 [myid:] - INFO  [main:Environment@100] - Server environment:java.version=1.8.0_191
+2018-12-12 16:37:11,143 [myid:] - INFO  [main:Environment@100] - Server environment:java.vendor=Oracle Corporation
+2018-12-12 16:37:11,146 [myid:] - INFO  [main:Environment@100] - Server environment:java.home=/usr/lib/jvm/java-8-openjdk-amd64/jre
+2018-12-12 16:37:11,154 [myid:] - INFO  [main:Environment@100] - Server environment:java.class.path=/opt/zookeeper/bin/../build/classes:/opt/zookeeper/bin/../build/lib/*.jar:/opt/zookeeper/bin/../lib/slf4j-log4j12-1.7.25.jar:/opt/zookeeper/bin/../lib/slf4j-api-1.7.25.jar:/opt/zookeeper/bin/../lib/netty-3.10.6.Final.jar:/opt/zookeeper/bin/../lib/log4j-1.2.17.jar:/opt/zookeeper/bin/../lib/jline-0.9.94.jar:/opt/zookeeper/bin/../lib/audience-annotations-0.5.0.jar:/opt/zookeeper/bin/../zookeeper-3.4.12.jar:/opt/zookeeper/bin/../src/java/lib/*.jar:/opt/zookeeper/bin/../conf:
+2018-12-12 16:37:11,154 [myid:] - INFO  [main:Environment@100] - Server environment:java.library.path=/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2018-12-12 16:37:11,154 [myid:] - INFO  [main:Environment@100] - Server environment:java.io.tmpdir=/tmp
+2018-12-12 16:37:11,161 [myid:] - INFO  [main:Environment@100] - Server environment:java.compiler=<NA>
+2018-12-12 16:37:11,167 [myid:] - INFO  [main:Environment@100] - Server environment:os.name=Linux
+2018-12-12 16:37:11,168 [myid:] - INFO  [main:Environment@100] - Server environment:os.arch=amd64
+2018-12-12 16:37:11,168 [myid:] - INFO  [main:Environment@100] - Server environment:os.version=4.15.0-42-generic
+2018-12-12 16:37:11,168 [myid:] - INFO  [main:Environment@100] - Server environment:user.name=mr_struct
+2018-12-12 16:37:11,168 [myid:] - INFO  [main:Environment@100] - Server environment:user.home=/home/mr_struct
+2018-12-12 16:37:11,169 [myid:] - INFO  [main:Environment@100] - Server environment:user.dir=/home/mr_struct/Bureau/bigData_etna/Java-Process-Twitter
+2018-12-12 16:37:11,187 [myid:] - ERROR [main:ZooKeeperServerMain@66] - Unexpected exception, exiting abnormally
+java.io.IOException: Cannot write to data directory /opt/zookeeper/data/version-2
+	at org.apache.zookeeper.server.persistence.FileTxnSnapLog.<init>(FileTxnSnapLog.java:91)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.runFromConfig(ZooKeeperServerMain.java:112)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.initializeAndRun(ZooKeeperServerMain.java:89)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.main(ZooKeeperServerMain.java:55)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:119)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:81)

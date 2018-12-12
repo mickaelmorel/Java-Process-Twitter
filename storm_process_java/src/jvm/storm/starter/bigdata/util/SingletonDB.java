@@ -1,9 +1,6 @@
 package storm.starter.bigdata.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SingletonDB {
 
@@ -62,5 +59,16 @@ public class SingletonDB {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public static ResultSet selectDB(String sql) {
+        ResultSet rs = null;
+        try {
+            Statement st = (Statement) connection.createStatement();
+            rs = st.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return rs;
     }
 }

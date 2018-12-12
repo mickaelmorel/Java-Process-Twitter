@@ -2,6 +2,7 @@ package storm.starter.bigdata.bolt;
 
 import org.apache.storm.topology.BasicOutputCollector;
 import org.apache.storm.topology.OutputFieldsDeclarer;
+import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Tuple;
 
 import java.net.URI;
@@ -18,22 +19,22 @@ import storm.starter.bigdata.util.SingletonDB;
 
 import java.sql.ResultSet;
 
-public class TweetApiBolt {
+public class TweetApiBolt extends BaseBasicBolt {
 
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
     }
 
     public void execute(Tuple input, BasicOutputCollector collector) {
         try {
-            String sql = "SELECT id_tweet, text FROM tweet_data";
+            String sql = "SELECT tweet_id, text FROM `bigdata`.`tweet_data`";
             ResultSet rs = SingletonDB.selectDB(sql);
             while (rs.next()) {
                 String text = rs.getString("text");
-                int tweet_id = rs.getInt("id_tweet");
+                int tweet_id = rs.getInt("tweet_id");
                 this.sendRequest(text, tweet_id);
             }
         } catch (Exception e) {
-            System.out.println("Error trying the post request : " + e);
+            System.out.println("Error trying the post request_0 : " + e);
         }
     }
 
@@ -51,10 +52,12 @@ public class TweetApiBolt {
             String json_string = EntityUtils.toString(response.getEntity());
             JSONObject jsonObject = new JSONObject(json_string);
             String api_response = jsonObject.getString("response");
-            String sql = "UPDATE tweet_data SET poids = \"" + api_response + "\" WHERE tweet_id = " + tweet_id;
+            String sql = "UPDATE `bigdata`.`tweet_data` " +
+                          "SET `bigdata`.`tweet_data`.`poids` = \"" + api_response + "\" " +
+                          "WHERE `bigdata`.`tweet_data`.`tweet_id` = " + tweet_id;
             SingletonDB.insertDB(sql);
         } catch (Exception e) {
-            System.out.println("Error trying the post request : " + e);
+            System.out.println("Error trying the post request_1 : " + e);
         }
     }
 
