@@ -6,6 +6,7 @@ import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
+import storm.starter.bigdata.SingletonDB;
 import storm.starter.bigdata.util.MyProperties;
 import twitter4j.Status;
 
@@ -121,41 +122,11 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
                     +"\""+status.getUser().getProfileBackgroundColor()+ "\", "
                     +"\""+status.getUser().getProfileBackgroundImageURL()+ "\", "
                     +"\""+status.getUser().getProfileImageURL()+ "\") ";
-            this.insertDB(sql.replaceAll("'","''"));
+
+
+            SingletonDB.getInstance();
+            SingletonDB.insertDB(sql.replaceAll("'","''"));
             collector.emit(new Values(status));
-        }
-    }
-
-    /**
-     * Play a request on MySQL Database
-     * @param sql
-     */
-    private void insertDB(String sql)
-    {
-        String url = MyProperties.getProperties("mysql_string");
-        String username = MyProperties.getProperties("mysql_user");
-        String password = MyProperties.getProperties("mysql_password");
-
-        System.out.println(url);
-        System.out.println(username);
-        System.out.println(password);
-
-        System.out.println("Connecting database...");
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch(ClassNotFoundException e) {
-            System.out.println(e);
-        }
-
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            System.out.println("Database connected!");
-            Statement st = (Statement) connection.createStatement();
-
-            st.executeUpdate(sql);
-
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println("Error while executing request : "+ e);
         }
     }
 
