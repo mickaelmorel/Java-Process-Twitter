@@ -1,17 +1,13 @@
 package storm.starter.bigdata.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
+
 
 public class SingletonDB {
 
     private static Connection connection;
 
-    /**
-     * Constructeur privé
-     */
     private SingletonDB() {
 
         String url = MyProperties.getProperties("mysql_string");
@@ -38,15 +34,8 @@ public class SingletonDB {
         }
     }
 
-
-    /**
-     * Instance unique pré-initialisée
-     */
     private static SingletonDB INSTANCE = new SingletonDB();
 
-    /**
-     * Point d'accès pour l'instance unique du singleton
-     */
     public static synchronized SingletonDB getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new SingletonDB();
@@ -62,5 +51,16 @@ public class SingletonDB {
         } catch (SQLException e) {
             System.out.println(e);
         }
+    }
+
+    public static ResultSet selectDB(String sql) {
+        ResultSet rs = null;
+        try {
+            Statement st = (Statement) connection.createStatement();
+            rs = st.executeQuery(sql);
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return rs;
     }
 }
