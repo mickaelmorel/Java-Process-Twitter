@@ -1,6 +1,4 @@
-package storm.starter.bigdata;
-
-import storm.starter.bigdata.util.MyProperties;
+package storm.starter.bigdata.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

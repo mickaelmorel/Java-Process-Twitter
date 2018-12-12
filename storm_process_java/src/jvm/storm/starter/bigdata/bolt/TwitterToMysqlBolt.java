@@ -6,14 +6,8 @@ import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Fields;
 import org.apache.storm.tuple.Tuple;
 import org.apache.storm.tuple.Values;
-import storm.starter.bigdata.SingletonDB;
-import storm.starter.bigdata.util.MyProperties;
+import storm.starter.bigdata.util.SingletonDB;
 import twitter4j.Status;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.TimeZone;
@@ -23,6 +17,7 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
 
     public void declareOutputFields(OutputFieldsDeclarer declarer)
     {
+
         declarer.declare(new Fields("tweet"));
     }
 
@@ -63,6 +58,7 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
                 placeId =status.getPlace().getId();
                 placeUrl =status.getPlace().getURL();
             }
+
             if(status.getRetweetedStatus() != null)
                 retweet_id = status.getRetweetedStatus().getId();
 
