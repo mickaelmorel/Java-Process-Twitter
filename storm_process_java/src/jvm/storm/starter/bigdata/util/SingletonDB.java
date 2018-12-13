@@ -6,9 +6,6 @@ public class SingletonDB {
 
     private static Connection connection;
 
-    /**
-     * Constructeur privé
-     */
     private SingletonDB() {
 
         String url =  "jdbc:mysql://localhost:3306";//MyProperties.getProperties("mysql_string");
@@ -35,15 +32,8 @@ public class SingletonDB {
         }
     }
 
-
-    /**
-     * Instance unique pré-initialisée
-     */
     private static SingletonDB INSTANCE = new SingletonDB();
 
-    /**
-     * Point d'accès pour l'instance unique du singleton
-     */
     public static synchronized SingletonDB getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new SingletonDB();

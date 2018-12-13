@@ -11,14 +11,13 @@ import org.apache.storm.topology.OutputFieldsDeclarer;
 import org.apache.storm.topology.base.BaseBasicBolt;
 import org.apache.storm.tuple.Tuple;
 import org.json.JSONObject;
-import storm.starter.bigdata.util.MyProperties;
 import storm.starter.bigdata.util.SingletonDB;
 
 import java.net.URI;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 
-public class TweeterDataBolt extends BaseBasicBolt {
+public class TweetDataBolt extends BaseBasicBolt {
 
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
     }
@@ -38,12 +37,11 @@ public class TweeterDataBolt extends BaseBasicBolt {
         SingletonDB.getInstance();
         SingletonDB.insertDB(sql_author);
         SingletonDB.insertDB(sql_tweet);
-        getdata();
+        getData();
 
     }
 
-
-    public void getdata() {
+    public void getData() {
         try {
             String sql = "SELECT tweet_id, text FROM `bigdata`.`tweet_data`";
             ResultSet rs = SingletonDB.selectDB(sql);
