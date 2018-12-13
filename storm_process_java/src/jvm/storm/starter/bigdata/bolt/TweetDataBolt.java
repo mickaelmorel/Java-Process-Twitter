@@ -32,18 +32,18 @@ public class TweetDataBolt extends BaseBasicBolt {
 
         String sql_tweet =  "INSERT INTO `bigdata`.`tweet_data` (tweet_id, author_id, created_at, retweeted_count, text) "
                 +"SELECT tweet_id, tweet_author_id, tweet_created_at, tweet_retweet_count, tweet_text from `bigdata`.`raw`," +
-                " `bigdata`.`author_data`  where `bigdata`.`author_data`.`author_id` = `bigdata`.`raw`.`tweet_author_id` ";
+                "`bigdata`.`author_data`  where `bigdata`.`author_data`.`author_id` = `bigdata`.`raw`.`tweet_author_id` ";
 
-        SingletonDB.getInstance();
-        SingletonDB.insertDB(sql_author);
         SingletonDB.insertDB(sql_tweet);
+        SingletonDB.insertDB(sql_author);
+
         getData();
 
     }
 
     public void getData() {
         try {
-            String sql = "SELECT tweet_id, text FROM `bigdata`.`tweet_data`";
+            String sql = "SELECT `bigdata`.`tweet_data`.`tweet_id`, `bigdata`.`tweet_data`.`text` FROM `bigdata`.`tweet_data`";
             ResultSet rs = SingletonDB.selectDB(sql);
             while (rs.next()) {
                 String text = rs.getString("text");
@@ -51,7 +51,7 @@ public class TweetDataBolt extends BaseBasicBolt {
                 this.sendRequest(text, tweet_id);
             }
 
-            SingletonDB.close();
+            //SingletonDB.close();
         } catch (Exception e) {
             System.out.println("Error trying the post request_0 : " + e);
         }
@@ -77,9 +77,9 @@ public class TweetDataBolt extends BaseBasicBolt {
             System.out.println(json_string);
             JSONObject jsonObject = new JSONObject(json_string);
             String api_response = jsonObject.getString("score");
-            String sql = "UPDATE `bigdata`.`tweet_data` " +
-                    "SET `bigdata`.`tweet_data`.`poids` = \"" + api_response + "\" " +
-                    "WHERE `bigdata`.`tweet_data`.`tweet_id` = " + tweet_id;
+            String sql = "INSERT INTO `bigdata`.`poids_data` (tweet_id, poids)" +
+                    "VALUES (\"" + tweet_id + "\", " +
+                    "\"" + api_response +"\") ";
             SingletonDB.insertDB(sql);
         } catch (Exception e) {
             System.out.println("Error trying the post request_1 : " + e);

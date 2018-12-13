@@ -17,6 +17,7 @@ public class TwitterMysqlTopology {
 
     public static void main(String[] args) throws Exception {
         TopologyBuilder builder = new TopologyBuilder();
+        SingletonDB.getInstance();
         builder.setSpout("twitterinput",new TwitterSpout("6vvelHfedlTAO5XiC5o13qR6A",
                 "wnrh79YaBjHUjUR5aa3xpn82p0DXIYKNXFOKH40H27CJJF7pRq",
                 "283183778-kWrT8PD3fYHV7OxI8cjGQpMq8exCd6yrUn7TYZxR",

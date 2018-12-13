@@ -72,3 +72,30 @@ CREATE TABLE `raw` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+DROP TABLE `poids_data`;
+DROP TABLE `tweet_data`;
+DROP TABLE `author_data`;
+
+CREATE TABLE `author_data` (
+
+   author_id BIGINT NOT NULL,
+   description LONGTEXT NOT NULL,
+   location LONGTEXT NOT NULL,
+   followers_count LONGTEXT NOT NULL,
+   friends_count LONGTEXT NOT NULL
+);
+
+
+CREATE TABLE `tweet_data` (
+    tweet_id BIGINT NOT NULL,
+    author_id BIGINT NOT NULL,
+    created_at LONGTEXT NOT NULL,
+    retweeted_count LONGTEXT NOT NULL,
+    text LONGTEXT NOT NULL,
+    poids LONGTEXT
+);
+
+CREATE TABLE `poids_data` (
+    tweet_id BIGINT NOT NULL,
+    poids LONGTEXT
+);
