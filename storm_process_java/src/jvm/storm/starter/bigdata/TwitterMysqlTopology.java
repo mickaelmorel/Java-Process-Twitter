@@ -18,10 +18,13 @@ public class TwitterMysqlTopology {
 
     public static void main(String[] args) throws Exception {
         TopologyBuilder builder = new TopologyBuilder();
-        builder.setSpout("twitterinput", new TwitterSpout(MyProperties.getProperties("twitter_consumer_key"),
-                MyProperties.getProperties("twitter_consumer_secret"),
+        builder.setSpout("twitterinput",new TwitterSpout("6vvelHfedlTAO5XiC5o13qR6A",
+                "wnrh79YaBjHUjUR5aa3xpn82p0DXIYKNXFOKH40H27CJJF7pRq",
+                "283183778-kWrT8PD3fYHV7OxI8cjGQpMq8exCd6yrUn7TYZxR",
+                "CFaoub9q6dLgQ52Rsi5CKELAUgLp8CFnkoCE5I2G0HA6Q")); /*new TwitterSpout(MyProperties.getProperties("twitter_consumer_key"),
+                /*MyProperties.getProperties("twitter_consumer_secret"),
                 MyProperties.getProperties("twitter_consumer_access_token"),
-                MyProperties.getProperties("twitter_consumer_access_token_secret")));
+                MyProperties.getProperties("twitter_consumer_access_token_secret")));*/
 
         builder.setBolt("push", new TwitterToMysqlBolt(), 4).shuffleGrouping("twitterinput");
 

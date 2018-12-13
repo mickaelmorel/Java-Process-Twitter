@@ -59,8 +59,8 @@ public class TweeterDataBolt extends BaseBasicBolt {
 
     public void sendRequest(String text, Long tweet_id){
         try {
-            String api_url = MyProperties.getProperties("api_url");
-            String api_key = MyProperties.getProperties("api_key");
+            String api_url = "https://shackra-french-text-sentiment-analysis-v1.p.mashape.com/api/fr/";//MyProperties.getProperties("api_url");
+            String api_key = "geKaZ02cSomshVx7yxGknOV1cx94p1RPzjzjsn3l504KP6Qnns";//MyProperties.getProperties("api_key");
             HttpClient httpClient = HttpClientBuilder.create().build();
             URI uri = new URI(api_url);
             HttpPost post = new HttpPost(uri);

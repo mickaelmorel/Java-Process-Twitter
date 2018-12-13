@@ -11,9 +11,9 @@ public class SingletonDB {
      */
     private SingletonDB() {
 
-        String url = MyProperties.getProperties("mysql_string");
-        String username = MyProperties.getProperties("mysql_user");
-        String password = MyProperties.getProperties("mysql_password");
+        String url =  "jdbc:mysql://localhost:3306";//MyProperties.getProperties("mysql_string");
+        String username = "root";//MyProperties.getProperties("mysql_user");
+        String password = "root";//MyProperties.getProperties("mysql_password");
 
         System.out.println(url);
         System.out.println(username);
