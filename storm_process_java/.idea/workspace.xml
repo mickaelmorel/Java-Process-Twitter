@@ -6,6 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="5a8887ce-dcf3-4ef8-b1f5-92cb25c55376" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/artifacts/storm_starter_jar/storm-starter.jar" beforeDir="false" afterPath="$PROJECT_DIR$/classes/artifacts/storm_starter_jar/storm-starter.jar" afterDir="false" />
@@ -20,6 +21,9 @@
       <change beforePath="$PROJECT_DIR$/target/classes/storm/starter/bigdata/util/SingletonDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/storm/starter/bigdata/util/SingletonDB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../zookeeper.out" beforeDir="false" afterPath="$PROJECT_DIR$/../zookeeper.out" afterDir="false" />
     </list>
+=======
+    <list default="true" id="5a8887ce-dcf3-4ef8-b1f5-92cb25c55376" name="Default" comment="" />
+>>>>>>> Stashed changes
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -313,10 +317,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544692448868" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
-    <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544613680064" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -463,8 +467,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-2" width="1368" height="735" extended-state="7" />
+    <frame x="-1" y="-2" width="1368" height="735" extended-state="6" />
     <editor active="true" />
+=======
+>>>>>>> Stashed changes
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23176292" />
       <window_info id="Structure" order="1" weight="0.25" />
