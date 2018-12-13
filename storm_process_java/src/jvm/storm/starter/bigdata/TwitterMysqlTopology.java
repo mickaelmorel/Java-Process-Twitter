@@ -9,6 +9,7 @@ import org.apache.storm.utils.Utils;
 import storm.starter.bigdata.bolt.TweetDataBolt;
 import storm.starter.bigdata.bolt.TwitterToMysqlBolt;
 import storm.starter.bigdata.spout.TwitterSpout;
+import storm.starter.bigdata.util.SingletonDB;
 
 public class TwitterMysqlTopology {
 

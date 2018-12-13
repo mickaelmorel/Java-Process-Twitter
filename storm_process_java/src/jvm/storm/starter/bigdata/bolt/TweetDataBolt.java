@@ -50,6 +50,8 @@ public class TweetDataBolt extends BaseBasicBolt {
                 Long tweet_id = rs.getLong("tweet_id");
                 this.sendRequest(text, tweet_id);
             }
+
+            SingletonDB.close();
         } catch (Exception e) {
             System.out.println("Error trying the post request_0 : " + e);
         }
