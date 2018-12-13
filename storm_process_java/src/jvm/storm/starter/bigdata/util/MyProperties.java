@@ -17,7 +17,7 @@ import java.util.Properties;
 
             try {
 //                input = new FileInputStream("../config.properties");
-                input = new FileInputStream("../config.properties");
+                input = new FileInputStream("config.properties");
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
