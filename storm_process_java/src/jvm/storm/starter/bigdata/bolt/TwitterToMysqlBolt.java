@@ -63,17 +63,49 @@ public  class TwitterToMysqlBolt extends BaseBasicBolt {
                 retweet_id = status.getRetweetedStatus().getId();
 
 
-            String sql = "INSERT INTO `bigdata`.`raw` (tweet_author_id, tweet_author_name, tweet_author_screen_name, tweet_author_lang, tweet_author_created_at ,"
-                    +" tweet_author_created_at_str_cet, tweet_author_created_at_str_utc, tweet_author_description,"
-                    +"tweet_author_url,tweet_id, tweet_created_at , tweet_created_at_str_cet, tweet_created_at_str_utc,"
-                    +"tweet_in_reply_to_tweet,  tweet_in_reply_to_user  , tweet_retweeted,   tweet_retweet_count,"
-                    +"tweet_favorited, tweet_author_protected, tweet_author_followers_count, tweet_author_friends_count,"
-                    +"tweet_author_listed_count, tweet_author_favorites_count, tweet_author_statuses_count,"
-                    +" tweet_author_geo_enabled, tweet_source, tweet_author_location, tweet_author_display_url,"
-                    +"tweet_author_utc_offset, tweet_author_time_zone, tweet_lang, tweet_coordinates_longitude,"
-                    +" tweet_coordinates_latitude, tweet_coordinates_type, tweet_place_country, tweet_place_country_code,"
-                    +"tweet_place_name, tweet_place_full_name , tweet_place_id, tweet_place_url, tweet_text,"
-                    +" tweet_author_profile_background_color, tweet_author_profile_background_image, tweet_author_profile_image)"
+            String sql = "INSERT INTO `bigdata`.`raw` (tweet_author_id," +
+                    " tweet_author_name," +
+                    " tweet_author_screen_name," +
+                    " tweet_author_lang, tweet_author_created_at ,"
+                    +"tweet_author_created_at_str_cet," +
+                    " tweet_author_created_at_str_utc, " +
+                    "tweet_author_description,"
+                    +"tweet_author_url," +
+                    "tweet_id, " +
+                    "tweet_created_at , " +
+                    "tweet_created_at_str_cet," +
+                    " tweet_created_at_str_utc,"
+                    +"tweet_in_reply_to_tweet," +
+                    "  tweet_in_reply_to_user  ," +
+                    " tweet_retweeted, " +
+                    "  tweet_retweet_count,"
+                    +"tweet_favorited, " +
+                    "tweet_author_protected," +
+                    " tweet_author_followers_count," +
+                    " tweet_author_friends_count,"
+                    +"tweet_author_listed_count, " +
+                    "tweet_author_favorites_count," +
+                    " tweet_author_statuses_count,"
+                    +" tweet_author_geo_enabled," +
+                    " tweet_source," +
+                    " tweet_author_location," +
+                    " tweet_author_display_url,"
+                    +"tweet_author_utc_offset, " +
+                    "tweet_author_time_zone, " +
+                    "tweet_lang," +
+                    " tweet_coordinates_longitude,"
+                    +" tweet_coordinates_latitude," +
+                    " tweet_coordinates_type, " +
+                    "tweet_place_country," +
+                    " tweet_place_country_code,"
+                    +"tweet_place_name," +
+                    " tweet_place_full_name , " +
+                    "tweet_place_id, " +
+                    "tweet_place_url, " +
+                    "tweet_text,"
+                    +" tweet_author_profile_background_color, " +
+                    "tweet_author_profile_background_image, " +
+                    "tweet_author_profile_image)"
                     +"VALUES(\""+ status.getUser().getId()+ "\", "
                     +"\""+status.getUser().getName()+ "\", "
                     +"\""+status.getUser().getScreenName()+ "\", "

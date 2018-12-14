@@ -92,7 +92,7 @@ CREATE TABLE `tweet_data` (
     created_at LONGTEXT NOT NULL,
     retweeted_count LONGTEXT NOT NULL,
     text LONGTEXT NOT NULL,
-    poids LONGTEXT
+    full_name LONGTEXT
 );
 
 CREATE TABLE `poids_data` (

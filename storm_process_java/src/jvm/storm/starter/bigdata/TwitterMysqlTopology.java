@@ -39,7 +39,7 @@ public class TwitterMysqlTopology {
 
             LocalCluster cluster = new LocalCluster();
             cluster.submitTopology("twitterfilter", conf, builder.createTopology());
-            Utils.sleep(30000);
+            Utils.sleep(120000);
             cluster.killTopology("twitterfilter");
             cluster.shutdown();
         }
